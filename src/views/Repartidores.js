@@ -1,14 +1,15 @@
-// HomePage.js
+
 import React from 'react';
 import logo from '../assets/img/logo1.jpg'; 
-import '../components/css/homePage.css'; 
+import SearchBar from '../components/searchbar/searchbar';
 
-function HomePage() {
+function Repartidores() {
     return (
         <div className="home-content">
             <div className="home-about">
                 <div className="about-text">
-                    <h2>¿Quiénes Somos?</h2>
+                    <SearchBar />
+                    <h2>Repartidores</h2>
                     <p>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
                         standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make 
@@ -25,4 +26,4 @@ function HomePage() {
     );
 }
 
-export default HomePage;
+export default Repartidores;

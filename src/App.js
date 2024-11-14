@@ -9,6 +9,7 @@ import UserProfile from './views/UserProfile';
 import PrivateRoute from './components/private/PrivateRoute';
 import ChangePassword from './views/chancePassword';
 import Layout from './components/layout/Layout';
+import Repartidores from './views/Repartidores';
 import './App.css';
 
 const router = createBrowserRouter([
@@ -33,6 +34,14 @@ const router = createBrowserRouter([
     element: (
       <Layout>
         <Register />
+      </Layout>
+    ),
+  },
+  {
+    path: '/repartidores',
+    element: (
+      <Layout>
+        <Repartidores />
       </Layout>
     ),
   },

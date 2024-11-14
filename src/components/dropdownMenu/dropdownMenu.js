@@ -20,11 +20,10 @@ function DropdownMenu({ isOpen, onClose }) {
                 {!showServices ? (
                     <>
                         <li><a href="/">Inicio</a></li>
-                        <li><a href="/search">Buscar</a></li>
                         <li onClick={toggleServices} className="dropdown-toggle">
                             Todos los servicios
                         </li>
-                        <li><a href="/couriers">Repartidores</a></li>
+                        <li><a href="/repartidores">Repartidores</a></li>
                         <li><a href="/deliveries">Entregas</a></li>
                     </>
                 ) : (
