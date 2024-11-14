@@ -29,10 +29,10 @@ function DropdownMenu({ isOpen, onClose }) {
                 ) : (
                     <>
                         <li onClick={handleBack} className="back-button">← Todos los servicios</li>
-                        <li>Estado del pedido</li>
-                        <li>Seguimiento en Tiempo Real</li>
-                        <li>Calificación y Evaluación de Repartidores</li>
-                        <li>Cobertura de Entrega</li>
+                        <li><a href="/estado/pedido">Estado del pedido</a></li>
+                        <li><a href="/seguimiento">Seguimiento en Tiempo Real</a></li>
+                        <li><a href="/calificacion">Calificación y Evaluación de Repartidores</a></li>
+                        <li><a href="/cobertura">Cobertura de Entrega</a></li>
                     </>
                 )}
             </ul>

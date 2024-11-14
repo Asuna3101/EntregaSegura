@@ -11,6 +11,10 @@ import ChangePassword from './views/chancePassword';
 import Layout from './components/layout/Layout';
 import Repartidores from './views/Repartidores';
 import Entregas from './views/Entregas';
+import Calificacion from './views/Calificacion';
+import Cobertura from './views/Cobertura';
+import EstadoPedido from './views/EstadoPedido';
+import SeguimientoPedido from './views/SeguimientoPedido';
 import './App.css';
 
 const router = createBrowserRouter([
@@ -51,6 +55,35 @@ const router = createBrowserRouter([
     element: (
       <Layout>
         <Entregas />
+      </Layout>
+    ),
+  },
+  {
+    path: '/calificacion',
+    element: (
+      <Layout>
+        <Calificacion />
+      </Layout>
+    ),
+  },  {
+    path: '/cobertura',
+    element: (
+      <Layout>
+        <Cobertura />
+      </Layout>
+    ),
+  },  {
+    path: '/estado/pedido',
+    element: (
+      <Layout>
+        <EstadoPedido/>
+      </Layout>
+    ),
+  },  {
+    path: '/seguimiento',
+    element: (
+      <Layout>
+        <SeguimientoPedido/>
       </Layout>
     ),
   },
