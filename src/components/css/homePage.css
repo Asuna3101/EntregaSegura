@@ -1,0 +1,55 @@
+/* homePage.css */
+
+.home-content {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+
+.home-about {
+    display: flex;
+    align-items: center;
+    gap: 2rem; /* Espacio entre el texto y el logo */
+}
+
+.about-logo {
+    width: 150px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.about-text {
+    text-align: left;
+    max-width: 500px;
+}
+
+.about-text h2 {
+    color: #393333;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.about-text p {
+    font-size: 1rem;
+    color: #555555;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.cta-button {
+    padding: 0.8rem 1.5rem;
+    background-color: #a07cb8;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #8b5fa4;
+}

@@ -1,0 +1,38 @@
+.item {
+    background-color: white;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    width: calc(30% - 20px);
+    display: inline-block;
+    vertical-align: top;
+}
+
+.item img {
+    width: 90%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.item div {
+    padding: 10px;
+}
+
+.item p {
+    font-size: 14px;
+    margin: 0;
+    color: #333;
+}
+
+.item a {
+    display: block;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    padding: 8px;
+}
+
+.item a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,42 @@
+/* Asegúrate de que el contenedor general de la página tenga este estilo */
+.user-profile-page {
+    background-color: #FFFFFF; /* Fondo blanco para toda la página */
+    display: flex;
+    flex-direction: column; /* Organiza el contenido en columna */
+    justify-content: center; /* Centra el contenido verticalmente */
+    align-items: center; /* Centra el contenido horizontalmente */
+    min-height: 100vh; /* Altura mínima para tomar toda la pantalla */
+    margin: 0; /* Elimina márgenes adicionales */
+}
+
+/* Estilo específico para el contenedor del formulario */
+.change-password {
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 360px; /* Ancho máximo para el formulario */
+    box-shadow: none; /* Elimina la sombra si no la deseas */
+}
+
+.change-password form {
+    display: flex;
+    flex-direction: column;
+}
+
+.change-password form input,
+.change-password form button {
+    padding: 10px;
+    margin-bottom: 20px; /* Espacio entre los campos y el botón */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.change-password form button {
+    background-color: #A884D6;
+    color: white;
+    cursor: pointer;
+}
+
+.change-password form button:hover {
+    background-color: #9170C2;
+}

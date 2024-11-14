@@ -1,0 +1,56 @@
+/* Estilo general para la página de ajustes de cuenta */
+.account-settings-page {
+    background-color: #FFFFFF; /* Fondo blanco para toda la página */
+    display: flex;
+    flex-direction: column; /* Organiza el contenido en columna */
+    justify-content: center; /* Centra el contenido verticalmente */
+    align-items: center; /* Centra el contenido horizontalmente */
+    padding: 50px 0; /* Añade padding arriba y abajo para evitar que el contenido toque los bordes */
+    min-height: 100vh; /* Altura mínima para tomar toda la pantalla */
+    margin: 0; /* Elimina márgenes adicionales */
+}
+
+/* Estilo específico para el contenedor del formulario */
+.account-settings {
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff; /* Fondo blanco para el formulario */
+    box-shadow: none; /* Elimina la sombra */
+    border: none; /* Elimina el borde */
+    width: 100%;
+    max-width: 360px; /* Ancho máximo controlado */
+    margin-bottom: 30px; /* Espacio antes del footer */
+}
+
+/* Estilos para los elementos del formulario */
+.account-settings form label {
+    display: block;
+    margin-bottom: 5px; /* Espacio entre etiqueta y campo de entrada */
+    color: #333; /* Color del texto para la etiqueta */
+    font-size: 16px; /* Tamaño de fuente para la etiqueta */
+}
+
+.account-settings form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px; /* Espacio entre los campos */
+    border: 1px solid #ccc; /* Borde sutil para los campos */
+    border-radius: 4px; /* Bordes redondeados para los campos de texto */
+    box-shadow: none; /* Asegúrate de eliminar cualquier sombra */
+}
+
+/* Estilo para el botón de actualización */
+.account-settings form button {
+    padding: 10px 20px;
+    background-color: #A884D6; /* Color de fondo púrpura */
+    color: white; /* Texto blanco para contraste */
+    border: none;
+    border-radius: 4px; /* Bordes redondeados para el botón */
+    cursor: pointer; /* Cursor de mano al pasar el ratón */
+    transition: background-color 0.3s; /* Transición suave al cambiar color */
+}
+
+/* Cambio de color al pasar el ratón sobre el botón */
+.account-settings form button:hover {
+    background-color: #9170C2; /* Color más oscuro al pasar el ratón */
+}

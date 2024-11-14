@@ -1,0 +1,10 @@
+* {
+  font-family: "Roboto", sans-serif;
+}
+/* App.css */
+
+body, html {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff; /* Asegúrate de que sea blanco o el color que deseas */
+}

@@ -1,0 +1,64 @@
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #fbe0ff; /* Fondo color beige claro */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.menu-icon {
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.menu-line {
+    width: 25px;
+    height: 2px;
+    background-color: #393333; /* Color oscuro para las líneas del menú */
+}
+
+.title-button {
+    background: none;
+    border: none;
+    color: #393333; /* Color oscuro para el título */
+    cursor: default; /* Hace el título no clickeable */
+    text-align: center;
+}
+
+.title-button h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 0.8rem;
+    color: #393333; /* Color para el subtítulo */
+    margin-top: -8px;
+    text-align: center;
+}
+
+.navbar-right {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    color: #393333; /* Color oscuro para los iconos */
+    cursor: pointer;
+}

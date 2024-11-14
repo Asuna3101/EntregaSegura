@@ -1,0 +1,96 @@
+/* Estilos específicos para la página de login */
+.login-page {
+    background-color: transparent;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-page .wrapper {
+    background-color: #FFFFFF;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 360px;  /* Limitar el ancho del formulario */
+}
+
+.login-page form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-page h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-page .input-box {
+    margin-bottom: 20px;
+}
+
+.login-page .input-box input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.login-page .remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #666;
+}
+
+.login-page .remember-forgot a {
+    color: #A884D6;
+    text-decoration: none;
+}
+
+.login-page .remember-forgot a:hover {
+    text-decoration: underline;
+}
+
+.login-page button {
+    background-color: #A884D6;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;  /* Ajustar padding para botones */
+    margin-top: 10px;  /* Espacio antes del botón */
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    align-self: center;  /* Centrar el botón en el formulario */
+    width: auto;  /* Ancho automático basado en el contenido */
+}
+
+.login-page button:hover {
+    background-color: #9170C2;
+}
+
+.login-page .register-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login-page .register-link a {
+    color: #A884D6;
+    text-decoration: none;
+}
+
+.login-page .register-link a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .login-page .wrapper {
+        padding: 20px;
+        max-width: 90%;
+    }
+}
