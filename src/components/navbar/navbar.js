@@ -13,7 +13,7 @@ function NavBar() {
     };
 
     const handleSearchClick = () => {
-        navigate('/search');  // Navega a la página de búsqueda
+        navigate('/repartidores');  // Navega a la página de búsqueda
     };
 
     const handleProfileClick = () => {

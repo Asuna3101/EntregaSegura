@@ -10,6 +10,7 @@ import PrivateRoute from './components/private/PrivateRoute';
 import ChangePassword from './views/chancePassword';
 import Layout from './components/layout/Layout';
 import Repartidores from './views/Repartidores';
+import Entregas from './views/Entregas';
 import './App.css';
 
 const router = createBrowserRouter([
@@ -42,6 +43,14 @@ const router = createBrowserRouter([
     element: (
       <Layout>
         <Repartidores />
+      </Layout>
+    ),
+  },
+  {
+    path: '/entregas',
+    element: (
+      <Layout>
+        <Entregas />
       </Layout>
     ),
   },

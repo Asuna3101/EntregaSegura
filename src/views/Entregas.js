@@ -1,14 +1,12 @@
-
 import React from 'react';
 import SearchBar from '../components/searchbar/searchbar';
-
-function Repartidores() {
+function Entregas() {
     return (
         <div className="home-content">
             <div className="home-about">
                 <div className="about-text">
                     <SearchBar />
-                    <h2>Repartidores</h2>
+                    <h2>Entregas</h2>
                     <p>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
                         standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make 
@@ -23,4 +21,4 @@ function Repartidores() {
     );
 }
 
-export default Repartidores;
+export default Entregas;

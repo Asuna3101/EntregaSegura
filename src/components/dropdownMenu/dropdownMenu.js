@@ -24,7 +24,7 @@ function DropdownMenu({ isOpen, onClose }) {
                             Todos los servicios
                         </li>
                         <li><a href="/repartidores">Repartidores</a></li>
-                        <li><a href="/deliveries">Entregas</a></li>
+                        <li><a href="/entregas">Entregas</a></li>
                     </>
                 ) : (
                     <>
