@@ -10,12 +10,14 @@ function HomePage() {
                 <div className="about-text">
                     <h2>¿Quiénes Somos?</h2>
                     <p>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
-                        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make 
-                        a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, 
-                        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing 
-                        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions 
-                        of Lorem Ipsum.
+                    Brindamos un servicio de delivery especializado y seguro. Ofrecemos a los
+                    usuarios la posibilidad de seleccionar repartidores verificados y calificados
+                    por la comunidad. Esta pagina incluye una red de repartidores que han pasado
+                    por un proceso de verificación y que son constantemente evaluados por los usuarios. 
+                    Los clientes pueden ver las calificaciones y comentarios de otros usuarios sobre los 
+                    repartidores antes de seleccionar quién entregará su pedido. Además, la aplicación 
+                    incluye un sistema de seguimiento en tiempo real, asegurando que los clientes sepan 
+                    exactamente dónde está su pedido en cada momento. 
                     </p>
                     <button className="cta-button">Forma de Entrega y Pago</button>
                 </div>

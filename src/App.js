@@ -12,8 +12,8 @@ import Layout from './components/layout/Layout';
 import Repartidores from './views/Repartidores';
 import Entregas from './views/Entregas';
 import Calificacion from './views/Calificacion';
-import Cobertura from './views/Cobertura';
-import EstadoPedido from './views/EstadoPedido';
+import Cobertura from './views/cobertura';
+import EstadoPedido from './views/estadoPedido';
 import SeguimientoPedido from './views/SeguimientoPedido';
 import './App.css';
 
