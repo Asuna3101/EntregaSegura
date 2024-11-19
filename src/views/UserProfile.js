@@ -44,10 +44,10 @@ export default function UserProfile() {
                 <div className="sidebar">
                     <h3 className="sidebar-title">Mi Cuenta</h3>
                     <ul>
-                        <li><button onClick={() => setSection('recent-orders')}>Órdenes Recientes</button></li>
+                        <li><button onClick={() => setSection('recent-orders')}>Historial de pedidos</button></li>
                         <li><button onClick={() => setSection('recent-orders')}>Reseñas</button></li>
-                        <li><button onClick={() => setSection('profile')}>Datos de Registro</button></li>
-                        <li><button onClick={() => setSection('change-password')}>Cambiar Password</button></li>
+                        <li><button onClick={() => setSection('profile')}>Actualizar Datos</button></li>
+                        <li><button onClick={() => setSection('change-password')}>Cambiar Contraseña</button></li>
                         <li><button onClick={logout}>Cerrar Sesión</button></li>
                     </ul>
                 </div>

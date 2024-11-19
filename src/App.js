@@ -10,11 +10,9 @@ import PrivateRoute from './components/private/PrivateRoute';
 import ChangePassword from './views/chancePassword';
 import Layout from './components/layout/Layout';
 import Repartidores from './views/Repartidores';
-import Entregas from './views/Entregas';
 import Calificacion from './views/Calificacion';
 import Cobertura from './views/cobertura';
 import EstadoPedido from './views/estadoPedido';
-import SeguimientoPedido from './views/SeguimientoPedido';
 import './App.css';
 
 const router = createBrowserRouter([
@@ -51,14 +49,6 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/entregas',
-    element: (
-      <Layout>
-        <Entregas />
-      </Layout>
-    ),
-  },
-  {
     path: '/calificacion',
     element: (
       <Layout>
@@ -79,14 +69,7 @@ const router = createBrowserRouter([
         <EstadoPedido/>
       </Layout>
     ),
-  },  {
-    path: '/seguimiento',
-    element: (
-      <Layout>
-        <SeguimientoPedido/>
-      </Layout>
-    ),
-  },
+  },  
   {
     path: '/password/recovery',
     element: (
@@ -99,9 +82,9 @@ const router = createBrowserRouter([
     path: '/user/profile',
     element: (
       <Layout>
-        <PrivateRoute>
+        
           <UserProfile />
-        </PrivateRoute>
+    
       </Layout>
     ),
   },
