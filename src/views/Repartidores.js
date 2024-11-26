@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import SearchBar from '../components/searchbar/searchbar';
 import '../components/css/repartidores.css';
+
 function Repartidores() {
-    const [repartidores, setRepartidores] = useState([]); // Todos los repartidores
-    const [filteredRepartidores, setFilteredRepartidores] = useState([]); // Repartidores filtrados
-    const [reseñas, setReseñas] = useState([]); // Reseñas del repartidor seleccionado
-    const [selectedRepartidor, setSelectedRepartidor] = useState(null); // Repartidor seleccionado
+    const [repartidores, setRepartidores] = useState([]);
+    const [filteredRepartidores, setFilteredRepartidores] = useState([]);
+    const [reseñas, setReseñas] = useState([]);
+    const navigate = useNavigate();
 
     // Obtener los repartidores desde el backend
     useEffect(() => {
@@ -21,7 +23,6 @@ function Repartidores() {
             });
     }, []);
 
-    // Función para manejar el filtro
     const handleSearch = (searchValue) => {
         const filtered = repartidores.filter((repartidor) =>
             repartidor.nombre.toLowerCase().includes(searchValue.toLowerCase())
@@ -29,23 +30,29 @@ function Repartidores() {
         setFilteredRepartidores(filtered);
     };
 
-    // Función para obtener las reseñas de un repartidor
+    const handleSeleccionarRepartidor = (repartidor) => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            navigate('/login'); // Si no está logeado, redirigir al login
+        } else {
+            navigate('/pedido', { state: { repartidor } }); // Pasar el objeto repartidor completo
+        }
+    };
+    
+
     const handleViewReseñas = (id) => {
         axios
             .get(`http://localhost:5000/api/repartidores/${id}/resenas`)
             .then((response) => {
                 setReseñas(response.data);
-                setSelectedRepartidor(id); // Almacena el repartidor seleccionado
             })
             .catch((error) => {
                 console.error('Error al obtener las reseñas:', error);
             });
     };
 
-    // Función para cerrar las reseñas
     const closeReseñas = () => {
-        setReseñas([]); // Limpia las reseñas
-        setSelectedRepartidor(null); // Limpia el repartidor seleccionado
+        setReseñas([]);
     };
 
     return (
@@ -61,7 +68,6 @@ function Repartidores() {
                         <table>
                             <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>Nombre</th>
                                     <th>Apellido</th>
                                     <th>Foto</th>
@@ -73,7 +79,6 @@ function Repartidores() {
                             <tbody>
                                 {filteredRepartidores.map((repartidor) => (
                                     <tr key={repartidor.id}>
-                                        <td>{repartidor.id}</td>
                                         <td>{repartidor.nombre}</td>
                                         <td>{repartidor.apellido}</td>
                                         <td>
@@ -87,6 +92,9 @@ function Repartidores() {
                                         <td>{repartidor.estado}</td>
                                         <td>
                                             <button onClick={() => handleViewReseñas(repartidor.id)}>Ver reseñas</button>
+                                            <button onClick={() => handleSeleccionarRepartidor(repartidor)}>
+                                            Seleccionar Repartidor
+                                            </button>                                                
                                         </td>
                                     </tr>
                                 ))}
@@ -101,7 +109,6 @@ function Repartidores() {
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
                                         <th>Autor</th>
                                         <th>Repartidor</th>
                                         <th>Estrella</th>
@@ -111,7 +118,6 @@ function Repartidores() {
                                 <tbody>
                                     {reseñas.map((reseña) => (
                                         <tr key={reseña.id}>
-                                            <td>{reseña.id}</td>
                                             <td>{reseña.autor}</td>
                                             <td>{reseña.repartidor}</td>
                                             <td>{reseña.estrella}</td>

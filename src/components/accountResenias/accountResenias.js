@@ -1,45 +1,71 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/accountResenias.css';
-// Sample data
-const initialOrders = [
-    { id: '12345232', items: 'x3 Items (Juego de cartas, juego de cartas...)', date: '2022-02-12', total: '$22.00', address: 'Jiron Hucsar 123, Jesus Maria, Lima, Peru' },
-    { id: '12345232', items: 'x4 Items (Pokemon Red, Pokemon Blue, Ghost of Tsushima)', date: '2022-02-12', total: '$122.00', address: 'Jiron Hucsar 123, Jesus Maria, Lima, Peru' },
-    // Add more orders as needed
-];
 
-const RecentOrders = () => {
-    const [orders, setOrders] = useState(initialOrders);
+const Resenias = () => {
+    const [resenias, setResenias] = useState([]);
+    const [message, setMessage] = useState('');
 
-    
-    const sortOrders = () => {
-        const sorted = [...orders].sort((a, b) => new Date(a.date) - new Date(b.date));
-        setOrders(sorted);
+    useEffect(() => {
+        const fetchResenias = async () => {
+            try {
+                const response = await fetch('http://localhost:5000/api/resenas', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                    },
+                });
+                const data = await response.json();
+
+                if (response.ok) {
+                    setResenias(data);
+                } else {
+                    throw new Error(data.error || 'No se pudieron cargar las reseñas.');
+                }
+            } catch (error) {
+                console.error('Error al obtener las reseñas:', error);
+                setMessage('Error al cargar las reseñas. Intente nuevamente.');
+            }
+        };
+
+        fetchResenias();
+    }, []);
+
+    const sortResenias = () => {
+        const sorted = [...resenias].sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+        setResenias(sorted);
     };
 
     return (
         <div>
-            <h2>Órdenes Recientes</h2>
-            <button onClick={sortOrders}>Ordenar por fecha (más antiguas primero)</button>
+            <h2>Historial de Reseñas</h2>
+            <button onClick={sortResenias} className="btn-sort">
+                Ordenar por fecha (más antiguas primero)
+            </button>
+            {message && <p className="error-message">{message}</p>}
             <table>
                 <thead>
                     <tr>
                         <th>Fecha</th>
-                        <th>Items</th>
-                        <th>Total</th>
-                        <th>Enviado a</th>
-                        <th>Orden No.</th>
-                        <th></th>
+                        <th>Repartidor</th>
+                        <th>Estrellas</th>
+                        <th>Comentario</th>
+                        <th>Pedido</th>
+                        <th>Acción</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {orders.map((order, index) => (
+                    {resenias.map((resenia, index) => (
                         <tr key={index}>
-                            <td>{order.date}</td>
-                            <td>{order.items}</td>
-                            <td>{order.total}</td>
-                            <td>{order.address}</td>
-                            <td>{order.id}</td>
-                            <td><button>Ver Detalle</button></td>
+                            <td>{resenia.fecha}</td>
+                            <td>{resenia.repartidor}</td>
+                            <td>{resenia.estrellas}</td>
+                            <td>{resenia.comentario}</td>
+                            <td>{resenia.pedido_id}</td>
+                            <td>
+                                <button>Editar</button>
+                                <button>Eliminar</button>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
@@ -48,4 +74,4 @@ const RecentOrders = () => {
     );
 };
 
-export default RecentOrders;
+export default Resenias;

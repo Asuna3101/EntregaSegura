@@ -1,0 +1,41 @@
+.pedido-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #f9f9f9;
+}
+
+.pedido-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.pedido-form label {
+    margin: 10px 0 5px;
+}
+
+.pedido-form input,
+.pedido-form select {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.repartidor-foto {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.pedido-info {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    background: #e6f7ff;
+    border-radius: 10px;
+}

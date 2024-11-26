@@ -7,12 +7,12 @@ import Login from './views/Login';
 import PasswordRecovery from './views/PasswordRecovery';
 import UserProfile from './views/UserProfile';
 import PrivateRoute from './components/private/PrivateRoute';
-import ChangePassword from './views/chancePassword';
+import ChangePasswordRecover from './views/chancePasswordRecoverAccount';
 import Layout from './components/layout/Layout';
 import Repartidores from './views/Repartidores';
-import Calificacion from './views/Calificacion';
+import PedidoDetalle from './views/PedidoDetalle';
 import Cobertura from './views/cobertura';
-import EstadoPedido from './views/estadoPedido';
+import Pedido from './views/Pedido';
 import './App.css';
 
 const router = createBrowserRouter([
@@ -49,10 +49,10 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/calificacion',
+    path: '/pedidoDetalle',
     element: (
       <Layout>
-        <Calificacion />
+        <PedidoDetalle />
       </Layout>
     ),
   },  {
@@ -63,10 +63,10 @@ const router = createBrowserRouter([
       </Layout>
     ),
   },  {
-    path: '/estado/pedido',
+    path: '/pedido',
     element: (
       <Layout>
-        <EstadoPedido/>
+        <Pedido/>
       </Layout>
     ),
   },  
@@ -84,7 +84,7 @@ const router = createBrowserRouter([
       <Layout>
         <PrivateRoute>
           <UserProfile />
-          </PrivateRoute>
+        </PrivateRoute>
       </Layout>
     ),
   },
@@ -92,7 +92,7 @@ const router = createBrowserRouter([
     path: '/reset-password',
     element: (
       <Layout>
-        <ChangePassword />
+        <ChangePasswordRecover />
       </Layout>
     ),
   },

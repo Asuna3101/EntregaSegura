@@ -1,0 +1,37 @@
+.cobertura-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.cobertura-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.cobertura-table th,
+.cobertura-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.cobertura-table th {
+    background-color: #f2f2f2;
+}
+
+.action-button,
+.close-button {
+    background-color: #b18cd9;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.action-button:hover,
+.close-button:hover {
+    background-color: #8e6bb8;
+}

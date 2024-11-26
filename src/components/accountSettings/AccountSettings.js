@@ -11,20 +11,20 @@ const AccountSettings = () => {
         const userData = { nombre, apellido, correo };
 
         try {
-            const response = await fetch('tiendaback.azurewebsites.net/usuario', {
+            const response = await fetch('http://localhost:5000/api/usuarios/update', { // Cambia la URL según tu configuración
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem('token')}` // Asegúrate de que el token es correcto y está disponible.
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`, // Token JWT desde localStorage
                 },
-                body: JSON.stringify(userData)
+                body: JSON.stringify(userData),
             });
 
             const result = await response.json();
             if (response.ok) {
                 setMessage('Datos actualizados con éxito.');
             } else {
-                setMessage(result.message || 'Error al actualizar los datos.');  // Usar el mensaje de error del servidor si está disponible.
+                setMessage(result.error || 'Error al actualizar los datos.');
             }
         } catch (error) {
             console.error('Error al actualizar los datos:', error);
@@ -53,6 +53,6 @@ const AccountSettings = () => {
             {message && <p>{message}</p>}
         </div>
     );
-}
+};
 
 export default AccountSettings;

@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../components/css/login.css';
 
-const API_URL = 'http://localhost:5000/api/usuarios/login'; // URL actualizada al backend local
+const API_URL = 'http://localhost:5000/api/usuarios/login';
 
 export default function Login() {
     const [correo, setCorreo] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
 
     const handleLogin = async (event) => {
@@ -24,16 +25,15 @@ export default function Login() {
 
             if (response.ok) {
                 const data = await response.json();
-                console.log(data);
-                localStorage.setItem('token', data.token); // Guardar el token en localStorage
-                navigate(`/user/profile`); // Redirige al usuario al perfil
+                localStorage.setItem('token', data.token);
+                navigate(`/user/profile`);
             } else {
                 const errorData = await response.json();
-                alert(errorData.error || 'Error al iniciar sesión');
+                setErrorMessage(errorData.error || 'Error al iniciar sesión');
             }
         } catch (error) {
             console.error('Error:', error);
-            alert('Error al iniciar sesión. Por favor, inténtelo de nuevo.');
+            setErrorMessage('Error al iniciar sesión. Por favor, inténtelo de nuevo.');
         }
     };
 
@@ -42,6 +42,7 @@ export default function Login() {
             <div className='wrapper'>
                 <form onSubmit={handleLogin}>
                     <h1>Login</h1>
+                    {errorMessage && <p className="error-message">{errorMessage}</p>}
                     <div className="input-box">
                         <input
                             type="email"
@@ -61,6 +62,7 @@ export default function Login() {
                         />
                     </div>
                     <div className="remember-forgot"> 
+                        <a href="/password/recovery">¿Olvidaste tu contraseña?</a>
                     </div>
                     <button type="submit">Login</button>
                     <div className="register-link">

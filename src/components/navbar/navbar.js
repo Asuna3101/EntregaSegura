@@ -1,4 +1,3 @@
-// NavBar.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DropdownMenu from '../dropdownMenu/dropdownMenu';
@@ -9,7 +8,7 @@ function NavBar() {
     const navigate = useNavigate();
 
     const handleInicioClick = () => {
-        navigate('/');  // Navega a la página de búsqueda
+        navigate('/');  // Navega a la página de inicio
     };
 
     const handleSearchClick = () => {
@@ -17,7 +16,13 @@ function NavBar() {
     };
 
     const handleProfileClick = () => {
-        navigate('/login');  // Navega a la página del perfil
+        const isAuthenticated = !!localStorage.getItem('token'); // Verifica si el usuario está logueado
+
+        if (isAuthenticated) {
+            navigate('/user/profile'); // Redirige al perfil si está logueado
+        } else {
+            navigate('/login'); // Redirige al login si no está logueado
+        }
     };
 
     const toggleMenu = () => {
