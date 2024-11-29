@@ -11,7 +11,7 @@ import ChangePasswordRecover from './views/chancePasswordRecoverAccount';
 import Layout from './components/layout/Layout';
 import Repartidores from './views/Repartidores';
 import PedidoDetalle from './views/PedidoDetalle';
-import Cobertura from './views/cobertura';
+import Cobertura from './views/Cobertura';
 import Pedido from './views/Pedido';
 import './App.css';
 
