@@ -13,7 +13,7 @@ function Repartidores() {
     // Obtener los repartidores desde el backend
     useEffect(() => {
         axios
-            .get('http://localhost:5000/api/repartidores')
+            .get('http://localhost:5000/api/repartidores/list')
             .then((response) => {
                 setRepartidores(response.data);
                 setFilteredRepartidores(response.data);
@@ -42,7 +42,7 @@ function Repartidores() {
 
     const handleViewReseñas = (id) => {
         axios
-            .get(`http://localhost:5000/api/repartidores/${id}/resenas`)
+            .get(`http://localhost:5000/api/repartidores/${id}/resenias`)
             .then((response) => {
                 setReseñas(response.data);
             })
@@ -82,11 +82,11 @@ function Repartidores() {
                                         <td>{repartidor.nombre}</td>
                                         <td>{repartidor.apellido}</td>
                                         <td>
-                                            <img
-                                                src={repartidor.foto}
-                                                alt="Foto del repartidor"
-                                                style={{ width: '50px', height: '50px' }}
-                                            />
+                                        <img
+                            src={`http://localhost:5000/img/${repartidor.foto}`}
+                            alt={`Foto de ${repartidor.nombre}`}
+                            style={{ width: '50px', height: '50px', objectFit: 'cover' }}
+                        />
                                         </td>
                                         <td>{repartidor.estrellas_promedio || 'N/A'}</td>
                                         <td>{repartidor.estado}</td>

@@ -5,6 +5,9 @@ function PedidoDetalle() {
     const location = useLocation();
     const { pedido } = location.state || {};
 
+    // Asegurarse de que pedido.precio es un número
+    const precio = pedido && !isNaN(parseFloat(pedido.precio)) ? parseFloat(pedido.precio) : 0;
+
     return (
         <div className="pedido-detalle">
             <h2>Detalles del Pedido</h2>
@@ -14,9 +17,7 @@ function PedidoDetalle() {
                     <p><strong>Descripción:</strong> {pedido.descripcion}</p>
                     <p><strong>Fecha de Pedido:</strong> {pedido.fecha_pedido}</p>
                     <p><strong>Fecha de Entrega:</strong> {pedido.fecha_entrega}</p>
-                    <p><strong>Precio:</strong> S/{pedido.precio.toFixed(2)}</p>
-                    <p><strong>Dirección de Origen:</strong> {pedido.direccion_origen}</p>
-                    <p><strong>Dirección de Destino:</strong> {pedido.direccion_destino}</p>
+                    <p><strong>Precio:</strong> S/{precio.toFixed(2)}</p> {/* Usamos precio formateado */}
                 </div>
             ) : (
                 <p>No hay información disponible del pedido.</p>

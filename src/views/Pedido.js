@@ -9,6 +9,7 @@ function Pedido() {
     const repartidor = location.state?.repartidor || null; // Obtener el repartidor desde el estado
 
     const [form, setForm] = useState({
+        usuario_id: '', // Campo para el ID del usuario
         descripcion: '',
         numero_contacto_destino: '',
         numero_contacto_recibo: '',
@@ -71,27 +72,14 @@ function Pedido() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const token = localStorage.getItem('token'); // Obtener el token del usuario logeado
 
-        if (!token) {
-            setMessage('Por favor, inicie sesión para crear un pedido.');
-            return;
-        }
-
+        // Enviar la información del pedido sin necesidad de token de autenticación
         axios
-            .post(
-                'http://localhost:5000/api/pedido',
-                {
-                    ...form,
-                    repartidor_id: repartidor.id,
-                    fecha_pedido: new Date().toISOString().split('T')[0],
-                },
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`, // Enviar el token en el encabezado
-                    },
-                }
-            )
+            .post('http://localhost:5000/api/pedido', {
+                ...form,
+                repartidor_id: repartidor?.id, // El ID del repartidor sigue siendo enviado si está disponible
+                fecha_pedido: new Date().toISOString().split('T')[0],
+            })
             .then((response) => {
                 navigate('/pedidoDetalle', { state: { pedido: response.data } });
             })
@@ -120,6 +108,16 @@ function Pedido() {
                     )}
 
                     <form onSubmit={handleSubmit}>
+                        <label>Usuario ID:</label>
+                        <input
+                            type="text"
+                            name="usuario_id"
+                            value={form.usuario_id}
+                            onChange={handleChange}
+                            placeholder="Ingresa tu ID"
+                            required
+                        />
+
                         <label>Descripción:</label>
                         <input
                             type="text"
@@ -216,7 +214,7 @@ function Pedido() {
                         </select>
 
                         <button type="submit" className="btn-crear">
-                            Crear
+                            Crear Pedido
                         </button>
                     </form>
 
@@ -228,3 +226,4 @@ function Pedido() {
 }
 
 export default Pedido;
+

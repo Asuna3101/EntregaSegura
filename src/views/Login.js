@@ -26,6 +26,7 @@ export default function Login() {
             if (response.ok) {
                 const data = await response.json();
                 localStorage.setItem('token', data.token);
+                console.log(localStorage.getItem('token'));
                 navigate(`/user/profile`);
             } else {
                 const errorData = await response.json();
