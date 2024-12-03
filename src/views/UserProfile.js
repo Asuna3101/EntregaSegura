@@ -5,6 +5,7 @@ import AccountSettings from '../components/accountSettings/AccountSettings.js';
 import ChangePassword from '../components/chancePassword/ChancePasSword.js';
 import Resenias from '../components/accountResenias/accountResenias.js';
 import Calificar from '../components/calificar/calificar.js';
+import SeguimientoPedido from '../components/seguimientoPedido/seguimientoPedido.js';
 export default function UserProfile() {
     const [userData, setUserData] = useState({});
     const [section, setSection] = useState(''); // Estado para controlar la sección visible
@@ -105,7 +106,7 @@ export default function UserProfile() {
                 {section === 'profile' && <AccountSettings userData={userData} />}
                 {section === 'recent-orders' && <RecentOrders />}
                 {section === 'resenias' && <Resenias />}
-                {section === 'seguimiento' && <estadoPedido />}
+                {section === 'seguimiento' && <SeguimientoPedido />}
                 {section === 'change-password' && <ChangePassword />}
                 {section === 'calificar' && <Calificar />}
             </div>

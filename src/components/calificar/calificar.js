@@ -26,7 +26,7 @@ function Calificar() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch('http://localhost:5000/api/calificaciones', {
+            const response = await fetch('http://localhost:5000/api/resenia/resenia', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
