@@ -1,73 +1,106 @@
-import React, { useState, useEffect } from 'react';
-import '../css/accountResenias.css';
+import React, { useState } from 'react';
 
 const Resenias = () => {
-    const [resenias, setResenias] = useState([]);
+    const [reviews, setReviews] = useState([]);
+    const [userId, setUserId] = useState('');
     const [message, setMessage] = useState('');
+    const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-        const fetchResenias = async () => {
-            try {
-                const response = await fetch('http://localhost:5000/api/resenas', {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${localStorage.getItem('token')}`,
-                    },
-                });
-                const data = await response.json();
+    const fetchReviews = async () => {
+        if (!userId) {
+            setMessage('Por favor, ingrese un ID de usuario válido.');
+            return;
+        }
 
-                if (response.ok) {
-                    setResenias(data);
-                } else {
-                    throw new Error(data.error || 'No se pudieron cargar las reseñas.');
-                }
-            } catch (error) {
-                console.error('Error al obtener las reseñas:', error);
-                setMessage('Error al cargar las reseñas. Intente nuevamente.');
+        setLoading(true);
+        setMessage('');
+
+        try {
+            const response = await fetch(`http://localhost:5000/api/resenia/usuario/${userId}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                },
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                setReviews(data);
+                setMessage('');
+            } else {
+                throw new Error(data.error || 'Error al cargar las reseñas.');
             }
-        };
+        } catch (error) {
+            console.error('Error al obtener reseñas:', error.message);
+            setMessage('Error al cargar las reseñas. Intente nuevamente.');
+        } finally {
+            setLoading(false);
+        }
+    };
 
-        fetchResenias();
-    }, []);
+    const deleteResenia = async (reseniaId) => {
+        try {
+            const response = await fetch(`http://localhost:5000/api/resenia/resenia/${reseniaId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                },
+            });
 
-    const sortResenias = () => {
-        const sorted = [...resenias].sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
-        setResenias(sorted);
+            const data = await response.json();
+            if (response.ok) {
+                setMessage('Reseña eliminada exitosamente.');
+                setReviews(reviews.filter(review => review.id !== reseniaId));  // Actualizar la lista de reseñas
+            } else {
+                throw new Error(data.error || 'Error al eliminar la reseña.');
+            }
+        } catch (error) {
+            console.error('Error al eliminar la reseña:', error.message);
+            setMessage('Error al eliminar la reseña. Intente nuevamente.');
+        }
     };
 
     return (
-        <div>
+        <div className="resenias-container">
             <h2>Historial de Reseñas</h2>
-            <button onClick={sortResenias} className="btn-sort">
-                Ordenar por fecha (más antiguas primero)
+            <input
+                type="text"
+                value={userId}
+                onChange={(e) => setUserId(e.target.value)}
+                placeholder="Ingrese ID del Usuario"
+            />
+            <button onClick={fetchReviews} disabled={loading}>
+                {loading ? 'Cargando...' : 'Cargar Reseñas'}
             </button>
             {message && <p className="error-message">{message}</p>}
             <table>
                 <thead>
                     <tr>
-                        <th>Fecha</th>
-                        <th>Repartidor</th>
+                        <th>ID</th>
+                        <th>Reseña</th>
                         <th>Estrellas</th>
-                        <th>Comentario</th>
-                        <th>Pedido</th>
+                        <th>Repartidor</th>
                         <th>Acción</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {resenias.map((resenia, index) => (
-                        <tr key={index}>
-                            <td>{resenia.fecha}</td>
-                            <td>{resenia.repartidor}</td>
-                            <td>{resenia.estrellas}</td>
-                            <td>{resenia.comentario}</td>
-                            <td>{resenia.pedido_id}</td>
+                    {reviews.length > 0 ? reviews.map((review) => (
+                        <tr key={review.id}>
+                            <td>{review.id}</td>
+                            <td>{review.resenia}</td>
+                            <td>{review.estrella}</td>
+                            <td>{review.repartidor_nombre || `ID ${review.repartidor_id}`}</td>
                             <td>
-                                <button>Editar</button>
-                                <button>Eliminar</button>
+                                <button onClick={() => deleteResenia(review.id)}>Eliminar</button>
                             </td>
                         </tr>
-                    ))}
+                    )) : (
+                        <tr>
+                            <td colSpan="5" style={{ textAlign: 'center' }}>No hay reseñas disponibles.</td>
+                        </tr>
+                    )}
                 </tbody>
             </table>
         </div>

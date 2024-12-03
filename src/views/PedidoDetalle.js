@@ -22,6 +22,7 @@ function PedidoDetalle() {
             ) : (
                 <p>No hay información disponible del pedido.</p>
             )}
+            <button>Pagar</button>
         </div>
     );
 }

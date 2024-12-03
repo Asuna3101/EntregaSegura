@@ -4,7 +4,7 @@ import RecentOrders from '../components/recentOrders/RecentOrders.js';
 import AccountSettings from '../components/accountSettings/AccountSettings.js';
 import ChangePassword from '../components/chancePassword/ChancePasSword.js';
 import Resenias from '../components/accountResenias/accountResenias.js';
-
+import Calificar from '../components/calificar/calificar.js';
 export default function UserProfile() {
     const [userData, setUserData] = useState({});
     const [section, setSection] = useState(''); // Estado para controlar la sección visible
@@ -80,6 +80,8 @@ export default function UserProfile() {
                 <ul>
                     <li><button onClick={() => setSection('recent-orders')}>Historial de pedidos</button></li>
                     <li><button onClick={() => setSection('resenias')}>Historial de reseñas</button></li>
+                    <li><button onClick={() => setSection('calificar')}>Dejar una reseña</button></li>
+                    <li><button onClick={() => setSection('seguimiento')}>Seguimiento de mi pedido</button></li>
                     <li><button onClick={() => setSection('profile')}>Actualizar Datos</button></li>
                     <li><button onClick={() => setSection('change-password')}>Cambiar Contraseña</button></li>
                     <li><button onClick={logout}>Cerrar Sesión</button></li>
@@ -103,7 +105,9 @@ export default function UserProfile() {
                 {section === 'profile' && <AccountSettings userData={userData} />}
                 {section === 'recent-orders' && <RecentOrders />}
                 {section === 'resenias' && <Resenias />}
+                {section === 'seguimiento' && <estadoPedido />}
                 {section === 'change-password' && <ChangePassword />}
+                {section === 'calificar' && <Calificar />}
             </div>
         </div>
     );

@@ -1,0 +1,61 @@
+.container {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+.title {
+    color: #333;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input,
+.select,
+.textarea {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.stars {
+    display: flex;
+}
+
+.star {
+    cursor: pointer;
+    font-size: 25px;
+    color: gray; /* Color when not selected */
+    margin-right: 5px;
+}
+
+.star:hover {
+    color: orange; /* Color on hover */
+}
+
+.selected {
+    color: gold; /* Color when selected */
+}
+
+.button {
+    padding: 10px 15px;
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #45a049;
+}

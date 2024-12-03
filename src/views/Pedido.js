@@ -96,14 +96,14 @@ function Pedido() {
                     <h2>Realizar Pedido</h2>
                     {repartidor && (
                         <div className="repartidor-info">
-                            <img
-                                src={repartidor.foto || 'default-repartidor.jpg'}
-                                alt={`${repartidor.nombre} ${repartidor.apellido}`}
-                                className="repartidor-foto"
-                            />
                             <p>
-                                <strong>Repartidor Seleccionado:</strong> {repartidor.nombre} {repartidor.apellido}
+                                <strong>Repartidor:</strong> {repartidor.nombre} {repartidor.apellido}
                             </p>
+                            <img
+                            src={`http://localhost:5000/img/${repartidor.foto}`}
+                            alt={`Foto de ${repartidor.nombre}`}
+                            style={{ width: '110px', height: '110px', objectFit: 'cover' }}
+                        />
                         </div>
                     )}
 
