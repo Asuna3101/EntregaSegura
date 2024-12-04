@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from '../css/calificar.css';
+ // Change this to your global CSS file
 
 function Calificar() {
     const [estrellas, setEstrellas] = useState(0);
@@ -47,25 +47,25 @@ function Calificar() {
     };
 
     return (
-        <div className={styles.container}>
-            <h2 className={styles.title}>Dejar una reseña</h2>
-            <form onSubmit={handleSubmit} className={styles.form}>
+        <div className="container">
+            <h2 className="title">Dejar una reseña</h2>
+            <form onSubmit={handleSubmit} className="form">
                 <div>
-                    <label htmlFor="usuario" className={styles.label}>ID del Usuario:</label>
+                    <label htmlFor="usuario" className="label">ID del Usuario:</label>
                     <input
                         type="text"
                         id="usuario"
-                        className={styles.input}
+                        className="input"
                         value={usuarioId}
                         onChange={e => setUsuarioId(e.target.value)}
                         required
                     />
                 </div>
                 <div>
-                    <label htmlFor="repartidor" className={styles.label}>Repartidor:</label>
+                    <label htmlFor="repartidor" className="label">Repartidor:</label>
                     <select
                         id="repartidor"
-                        className={styles.select}
+                        className="select"
                         value={repartidorId}
                         onChange={e => setRepartidorId(e.target.value)}
                         required
@@ -76,26 +76,26 @@ function Calificar() {
                         ))}
                     </select>
                 </div>
-                <div className={styles.stars}>
-                    <label className={styles.label}>Cuantas estrellas le asignas?</label>
+                <div className="stars">
+                    <label className="label">Cuantas estrellas le asignas?</label>
                     {[1, 2, 3, 4, 5].map(index => (
                         <span
                             key={index}
-                            className={index <= estrellas ? `${styles.star} ${styles.selected}` : styles.star}
+                            className={index <= estrellas ? "star selected" : "star"}
                             onClick={() => handleStarClick(index)}
                         >★</span>
                     ))}
                 </div>
                 <div>
-                    <label htmlFor="resenia" className={styles.label}>Deja una reseña:</label>
+                    <label htmlFor="resenia" className="label">Deja una reseña:</label>
                     <textarea
                         id="resenia"
-                        className={styles.textarea}
+                        className="textarea"
                         value={resenia}
                         onChange={e => setResenia(e.target.value)}
                     />
                 </div>
-                <button type="submit" className={styles.button}>Calificar</button>
+                <button type="submit" className="button">Calificar</button>
             </form>
         </div>
     );
