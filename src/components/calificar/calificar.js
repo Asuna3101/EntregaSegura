@@ -6,13 +6,14 @@ function Calificar() {
   const [resenia, setResenia] = useState("");
   const [repartidores, setRepartidores] = useState([]);
   const [repartidorId, setRepartidorId] = useState("");
-  const [usuarioId, setUsuarioId] = useState("");
 
   useEffect(() => {
     const fetchRepartidores = async () => {
-      const response = await fetch(
-        "http://localhost:5000/api/repartidores/list"
-      );
+      const response = await fetch("http://localhost:5000/api/repartidores/list", {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}` // Assuming token is stored in localStorage
+        }
+      });
       const data = await response.json();
       if (response.ok) {
         setRepartidores(data);
@@ -28,11 +29,13 @@ function Calificar() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const result = await fetch("http://localhost:5000/api/resenia/resenia", {
+      const result = await fetch("http://localhost:5000/api/resenia/resenia", { // Adjust the endpoint as necessary
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          'Authorization': `Bearer ${localStorage.getItem('token')}`  // Token for backend to extract user ID
+        },
         body: JSON.stringify({
-          usuario_id: usuarioId,
           repartidor_id: repartidorId,
           estrellas: estrellas,
           resenia: resenia,
@@ -41,7 +44,7 @@ function Calificar() {
 
       const response = await result.json();
 
-      if (response.ok) {
+      if (result.ok) {
         alert("Reseña enviada exitosamente.");
       } else {
         throw new Error("No se pudo enviar la reseña");
@@ -55,19 +58,6 @@ function Calificar() {
     <div className="container">
       <h2 className="title">Dejar una reseña</h2>
       <form onSubmit={handleSubmit} className="form">
-        <div>
-          <label htmlFor="usuario" className="label">
-            ID del Usuario:
-          </label>
-          <input
-            type="text"
-            id="usuario"
-            className="input"
-            value={usuarioId}
-            onChange={(e) => setUsuarioId(e.target.value)}
-            required
-          />
-        </div>
         <div>
           <label htmlFor="repartidor" className="label">
             Repartidor:
