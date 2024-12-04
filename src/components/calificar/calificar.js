@@ -28,19 +28,19 @@ function Calificar() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch(
-        "http://localhost:5000/api/resenia/resenia",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            usuario_id: usuarioId,
-            repartidor_id: repartidorId,
-            estrellas: estrellas,
-            resenia: resenia,
-          }),
-        }
-      );
+      const result = await fetch("http://localhost:5000/api/resenia/resenia", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          usuario_id: usuarioId,
+          repartidor_id: repartidorId,
+          estrellas: estrellas,
+          resenia: resenia,
+        }),
+      });
+
+      const response = await result.json();
+
       if (response.ok) {
         alert("Reseña enviada exitosamente.");
       } else {
